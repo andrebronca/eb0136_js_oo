@@ -1,0 +1,4 @@
+Editado no IntelliJ Communit 2022.1.1
+Iniciado no Windows 10
+Revisão de JavaScript Orientado a Objeto
+
