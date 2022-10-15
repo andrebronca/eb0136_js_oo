@@ -56,3 +56,59 @@ console.log( isFinite(-Infinity));  //false
 console.log( isFinite(12));     //true
 console.log( isFinite(1e308));  //true
 console.log( isFinite(1e309));  //false
+
+//Encode/decode URIs
+var url = 'http://www.packtpub.com/script.php?q=this and that';
+var encode = encodeURI(url);
+var encodeComp = encodeURIComponent(url);
+console.log( encode );
+console.log( encodeComp );
+console.log( decodeURI(encode));
+console.log( decodeURIComponent(encodeComp));
+//obs.: escape(), undescape() são deprecated
+
+//eval()
+//evitar usar por questões de segurança e performance
+var e = eval('var ii = 2;');
+console.log(e);     //undefined
+console.log(ii);    //2
+
+//alert()
+//não faz parte do javascript, é fornecido pelo browser do host
+//não é executado pelo node
+//alert('Não sou nativo do JavaScript');
+//obs.: não usar com thread ou ajax, pois causa um bloqueio
+
+//scope of variables
+var global1 = 1;
+function f(){
+    var local1 = 2;
+    global1++;
+    return global1;
+}
+console.log(f());   //2
+console.log(global1);   //2
+console.log(f());   //3
+//console.log(local1);    //ReferenceError: local1 is not defined
+if (true){
+    var local2 = '_true_';
+}
+console.log(local2);    //_true_
+
+for(var i = 0; i < 5; i++){
+    var local3 = 0;
+    local3 += i;
+}
+console.log(local3);    //4
+
+function f2(){
+    global2 = 0;
+    return global2++;
+}
+//console.log(global2);   //ReferenceError: global2 is not defined
+//variável só se torna global depois da chamada da função
+console.log(f2());  //0
+console.log(global2);   //1
+//Obs.: Uma boa prática é sempre usar 'var' para declarar variáveis e
+//padronizar onde elas ficam. Não usar o 'var' pode ocasionar de
+//ter bugs difíceis de serem descobertos, conflitos de nomes.
