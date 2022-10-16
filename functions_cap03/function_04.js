@@ -48,3 +48,48 @@ console.log(outer(10)); //The result is 30
 
 //functions that return functions
 //pg 98
+function a(){
+    console.log('A!');
+    return function(){
+        console.log('B!');
+    };
+}
+
+var newFunc = a();  // A!
+newFunc();  // B!
+console.log( newFunc() );   // B!, undefined
+//a function a() retorna um função, esta não possui um return então o
+//retorno é 'undefined'
+
+//irá exibir o conteúdo da função que é retornada
+a()();
+
+//function, rewrite thyself
+function a1(){
+    console.log('A1!');
+    a1 = function(){
+        console.log('B1!');
+    };
+}
+
+//Depois que a1() é chamada, é reescrita e passa a ter outro valor
+a1();   // A1!
+a1();   // B1!
+a1();   // B1!
+
+var a2 = (function(){
+
+    function someSetup(){
+        var setup = 'done';
+    }
+
+    function actualWork(){
+        console.log('Worky-worky');
+    }
+
+    someSetup();
+    return actualWork;  //retorna apenas a referência
+
+}());
+
+a2();   //Worky-worky
