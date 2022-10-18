@@ -20,5 +20,3 @@ var mydog = benji;
 console.log( mydog === benji );     //true
 console.log( mydog == benji );      //true
 console.log( mydog === fido );      //false
-
-
