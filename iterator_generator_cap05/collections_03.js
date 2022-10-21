@@ -1,6 +1,6 @@
 //pg 195
 //Collections
-//map
+//map : é iterável, a ordem importa, a key pode ser de qualquer tipo
 const m = new Map();    //creates an empty map
 m.set('first',1);
 console.log(m.get('first'));    //1
